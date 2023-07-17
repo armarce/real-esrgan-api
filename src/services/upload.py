@@ -10,7 +10,7 @@ async def save_image(uuid, input):
         raise HTTPException(status_code=400, detail="Invalid file type")
     
     file_extension = os.path.splitext(input.filename)[1]
-    file_path = "/home/real-esrgan-api/uploads/" + uuid + file_extension.lower()
+    file_path = "../uploads/" + uuid + file_extension.lower()
 
     with open(file_path, "wb") as buffer:
         shutil.copyfileobj(input.file, buffer)
