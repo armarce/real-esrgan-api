@@ -54,7 +54,7 @@ class RealEsrganController:
         cmd = cmd.format(*list_arguments)
         cmd_output = subprocess.check_output(cmd.split(" "), stderr=subprocess.STDOUT).decode("utf-8")
 
-        file_path_output_image = glob.glob("../results/{}_out".format(Path(file_path_upload_image).stem))[0]
+        file_path_output_image = glob.glob("../results/{}_out.*".format(Path(file_path_upload_image).stem))[0]
 
         with open(file_path_output_image, "rb") as image_file:
             encoded_image_string = base64.b64encode(image_file.read())
