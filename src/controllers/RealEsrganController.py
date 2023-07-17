@@ -6,6 +6,7 @@ import os
 import subprocess
 from pathlib import Path
 import uuid
+import glob
 
 random_uuid = str(uuid.uuid4())
 
@@ -25,7 +26,7 @@ class RealEsrganController:
         file_path_upload_image = await save_image(random_uuid, self.input)
 
         input = "--input " + file_path_upload_image
-        output = "--output /home/real-esrgan-api/results"
+        output = "--output ../results"
 
         list_arguments = [input, output]
 
@@ -43,20 +44,7 @@ class RealEsrganController:
         cmd = cmd.format(*list_arguments)
         cmd_output = subprocess.check_output(cmd.split(" "), stderr=subprocess.STDOUT).decode("utf-8")
 
-        file_extension = os.path.splitext(file_path_upload_image)[1]
-
-        match arguments['ext']:
-            
-            case "jpg":
-
-                file_extension = ".jpg"
-
-            case "png":    
-
-                file_extension = ".png"
-        
-
-        file_path_output_image = "/home/real-esrgan-api/results/{}_out{}".format(Path(file_path_upload_image).stem, file_extension) 
+        file_path_output_image = glob.glob("../results/{}_out{}".format(Path(file_path_upload_image).stem))[0]
 
         with open(file_path_output_image, "rb") as image_file:
             encoded_image_string = base64.b64encode(image_file.read())
@@ -67,6 +55,5 @@ class RealEsrganController:
         
         return {
             "cmd_output": cmd_output, 
-            "ext": file_extension, 
             "image": "data:"+mime_type+";base64,"+encoded_image_string.decode("utf-8")
         }
