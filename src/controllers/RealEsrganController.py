@@ -33,7 +33,7 @@ class RealEsrganController:
 
             if arguments[argument_key] != None:
 
-                list_arguments.append("--{argument} {argument_value}".format(argument = argument_key, argument_value = arguments[argument_key]))
+                list_arguments.append("--{argument} {argument_value}".format(argument = argument_key, argument_value = str(arguments[argument_key])))
             
             else:
 
