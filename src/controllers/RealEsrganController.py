@@ -38,6 +38,10 @@ class RealEsrganController:
 
                     list_arguments.append("--{argument}".format(argument = argument_key))
 
+                elif(argument_key == 'dn'): 
+
+                    list_arguments.append("-{argument}".format(argument = argument_key))
+
                 else:
 
                     list_arguments.append("--{argument} {argument_value}".format(argument = argument_key, argument_value = str(arguments[argument_key])))

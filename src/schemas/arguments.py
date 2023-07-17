@@ -7,7 +7,6 @@ class Arguments(BaseModel):
     tile: int = Field(default=0)
     face_enhance: bool = Field(default=False)
     ext: str = Field(default="auto")
-    dn: float = Field(default=1)
     model_config = ConfigDict(
         protected_namespaces=()
     )
