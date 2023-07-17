@@ -1,10 +1,13 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 from typing import Optional
 
 class Arguments(BaseModel):
-    model: str = Field(default='RealESRGAN_x4plus')
+    model_name: str = Field(default='RealESRGAN_x4plus')
     outscale: int = Field(default=2)
     tile: int = Field(default=0)
-    face_enhace: bool = Field(default=False)
+    face_enhance: bool = Field(default=False)
     ext: str = Field(default="auto")
     dn: float = Field(default=1)
+    model_config = ConfigDict(
+        protected_namespaces=()
+    )
