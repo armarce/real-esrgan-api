@@ -34,8 +34,14 @@ class RealEsrganController:
 
             if arguments[argument_key] != None:
 
-                list_arguments.append("--{argument} {argument_value}".format(argument = argument_key, argument_value = str(arguments[argument_key])))
-            
+                if(argument_key == 'face_enhance'): 
+
+                    list_arguments.append("--{argument}".format(argument = argument_key))
+
+                else:
+
+                    list_arguments.append("--{argument} {argument_value}".format(argument = argument_key, argument_value = str(arguments[argument_key])))
+
             else:
 
                 list_arguments.append("")
