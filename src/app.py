@@ -5,8 +5,7 @@ from fastapi.staticfiles import StaticFiles
 
 app = FastAPI()
 
-
-app.mount("/results", StaticFiles(directory="/home/real-esrgan-api/results"), name="results")
+#app.mount("/results", StaticFiles(directory="/home/real-esrgan-api/results"), name="results")
 
 @app.get("/")
 async def root():
