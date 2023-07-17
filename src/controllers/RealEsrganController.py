@@ -46,7 +46,7 @@ class RealEsrganController:
 
                 list_arguments.append("")
         
-        cmd = "python ../Real-ESRGAN/inference_realesrgan.py {} {} {} {} {} {} {}"
+        cmd = "python -W ignore ../Real-ESRGAN/inference_realesrgan.py {} {} {} {} {} {} {} {}"
         cmd = cmd.format(*list_arguments)
         cmd_output = subprocess.check_output(cmd.split(" "), stderr=subprocess.STDOUT).decode("utf-8")
 
